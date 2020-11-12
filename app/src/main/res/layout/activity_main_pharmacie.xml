@@ -12,4 +12,16 @@
         android:padding="10dp"
         android:layout_weight="1"/>
 
+    <ImageView
+        android:id="@+id/activity_main_image_pharmacie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/image_pharmacie"
+        android:adjustViewBounds="true"
+        />
+
 </LinearLayout>
