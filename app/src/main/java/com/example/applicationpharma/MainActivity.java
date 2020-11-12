@@ -6,9 +6,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import Modele.DAO;
 import Modele.Pharmacie;
 import adapter.PharmacieAdapter;
 
@@ -17,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private Pharmacie Pharma;
     private List<Pharmacie>lesPharmacies;
     private RecyclerView PharmacierecyclerView;
+    private DAO accesDonnees;
+    private static  String DB_NAME = "medicaments.db";
+
 
     PharmacieAdapter monAdapter;
     @Override
@@ -43,4 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         PharmacierecyclerView.setAdapter(monAdapter);
     }
+
+
+
 }
