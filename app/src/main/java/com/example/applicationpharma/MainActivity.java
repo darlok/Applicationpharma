@@ -4,16 +4,20 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,13 +49,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.gererDroits();
+
+        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                showExplanation("Permission Needed", "Rationale", Manifest.permission.WRITE_EXTERNAL_STORAGE, REQUEST_PERMISSION_EXTERNAL_CARD);
+            } else {
+                requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, REQUEST_PERMISSION_EXTERNAL_CARD);
+            }
+        } else {
+            Toast.makeText(MainActivity.this, "Permission (already) Granted!", Toast.LENGTH_SHORT).show();
+        }
 
         lesPharmacies= new ArrayList<Pharmacie>();
 
         this.accesDonnees= new DAO();
 
         this.gererViewRecycler();
+
 
     }
 
@@ -70,22 +86,44 @@ public class MainActivity extends AppCompatActivity {
 
         PharmacierecyclerView.setAdapter(monAdapter);
     }
-    private void gererDroits(){
-        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                showExplanation("Permission Needed", "Rationale", Manifest.permission.WRITE_EXTERNAL_STORAGE, REQUEST_PERMISSION_EXTERNAL_CARD);
-            } else {
-                this.requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, REQUEST_PERMISSION_EXTERNAL_CARD);
-            }
-        } else {
-            Toast.makeText(MainActivity.this, "Permission (already) Granted!", Toast.LENGTH_SHORT).show();
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_PERMISSION_EXTERNAL_CARD:
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(MainActivity.this, "Permission Granted!", Toast.LENGTH_SHORT).show();
+
+                    String state = Environment.getExternalStorageState();
+                    if(Environment.MEDIA_MOUNTED.equals(state)){
+                        // Both Read and write operations available
+                        Log.i("t2", "Il y a bien une carte externe");
+
+                        //je crée le répertoire pour placer la base de données sur la carte externe
+                        File appDir = new File(DB_PATH);
+                        if(!appDir.exists() && !appDir.isDirectory()){
+                            if (appDir.mkdirs()){
+                                Log.i("CreateDir","App dir created");
+                                copyDataBase();
+                            }
+                            else{
+                                Log.w("CreateDir","Unable to create app dir!");
+                            }
+                        }else{
+                            Log.i("CreateDir","App dir already exists");
+                        }
+                    } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)){
+                        // Only Read operation available
+                        Toast.makeText(MainActivity.this, "Il y a bien une carte externe mais elle est en lecture seule\"", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // SD card not mounted
+                        Toast.makeText(MainActivity.this, "Il n'y a pas de carte externe", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+                }
         }
-    }
-    private void requestPermission(String permissionName, int permissionRequestCode) {
-        ActivityCompat.requestPermissions(this,
-                new String[]{permissionName}, permissionRequestCode);
     }
 
     private void showExplanation(String title,
@@ -103,46 +141,12 @@ public class MainActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_PERMISSION_EXTERNAL_CARD:
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(MainActivity.this, "Permission autorisée par l'utilisateur", Toast.LENGTH_SHORT).show();
-
-                    String state = Environment.getExternalStorageState();
-                    if(Environment.MEDIA_MOUNTED.equals(state)){
-                        // Both Read and write operations available
-                        Log.i("MainActivity", "Il y a bien une carte externe");
-
-                        //je crée le répertoire pour placer la base de données sur la carte externe
-                        File appDir = new File(DB_PATH);
-                        if(!appDir.exists() && !appDir.isDirectory()){
-                            if (appDir.mkdirs()){
-                                Log.i("MainActivity","Répertoire Downloads/com.sqlite.gsb.testsqlite créé sur la carte externe");
-                                copyDataBase();
-                            }
-                            else{
-                                Log.w("MainActivity","Impossible de créer le répertoire Downloads/com.sqlite.gsb.testsqlite sur la carte externe");
-                            }
-                        }else{
-                            Log.i("MainActivity","Le répertoire Downloads/com.sqlite.gsb.testsqlite existe déjà sur la carte externe");
-                        }
-                    } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)){
-                        // Only Read operation available
-                        Toast.makeText(MainActivity.this, "Il y a bien une carte externe mais elle est en lecture seule\"", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // SD card not mounted
-                        Toast.makeText(MainActivity.this, "Il n'y a pas de carte externe", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(MainActivity.this, "Autorisation refusée par l'utilisateur", Toast.LENGTH_SHORT).show();
-                }
-        }
+    private void requestPermission(String permissionName, int permissionRequestCode) {
+        ActivityCompat.requestPermissions(this,
+                new String[]{permissionName}, permissionRequestCode);
     }
+
+
 
     private void copyDataBase() {
 
@@ -168,7 +172,4 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-
-
 }

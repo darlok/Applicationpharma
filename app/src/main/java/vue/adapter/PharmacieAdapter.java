@@ -39,4 +39,10 @@ public class PharmacieAdapter extends RecyclerView.Adapter<PharmacieViewHolder> 
         return this.lesPharmacies.size();
     }
 
+    public void refreshPresentations(List<Pharmacie> lesP) {
+        notifyItemRangeRemoved(0, this.lesPharmacies.size());
+        this.lesPharmacies.clear();
+        this.lesPharmacies.addAll(lesP);
+        notifyItemRangeChanged(0, this.lesPharmacies.size());
+    }
 }
