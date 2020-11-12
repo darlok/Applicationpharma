@@ -1,4 +1,9 @@
 package Modele.dao;
 
-public class DAO {
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+public class DAO extends SQliteAssetHelper {
+
+
 }
