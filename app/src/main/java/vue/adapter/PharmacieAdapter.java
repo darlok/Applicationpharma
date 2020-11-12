@@ -1,4 +1,4 @@
-package adapter;
+package vue.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import com.example.applicationpharma.R;
 import java.util.List;
 
 import Modele.Pharmacie;
-import holder.PharmacieViewHolder;
+import vue.holder.PharmacieViewHolder;
 
 public class PharmacieAdapter extends RecyclerView.Adapter<PharmacieViewHolder> {
     private List<Pharmacie>lesPharmacies;

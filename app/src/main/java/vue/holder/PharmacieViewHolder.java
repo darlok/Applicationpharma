@@ -1,4 +1,4 @@
-package holder;
+package vue.holder;
 
 import android.view.View;
 import android.widget.TextView;
