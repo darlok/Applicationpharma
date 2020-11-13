@@ -12,10 +12,18 @@ import com.example.applicationpharma.R;
 import java.util.List;
 
 import Modele.Pharmacie;
+import Modele.dao.DAO;
 import vue.holder.PharmacieViewHolder;
 
 public class PharmacieAdapter extends RecyclerView.Adapter<PharmacieViewHolder> {
     private List<Pharmacie>lesPharmacies;
+    private DAO accesDonnees;
+
+    public PharmacieAdapter(DAO accesDonnees,String RaisonSoiraisonSociale){
+        this.accesDonnees=accesDonnees;
+        this.lesPharmacies=accesDonnees.get
+    }
+
 
     public PharmacieAdapter(List<Pharmacie>lesPharmacies){
         this.lesPharmacies=lesPharmacies;
