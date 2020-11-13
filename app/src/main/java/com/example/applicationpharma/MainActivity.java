@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private DAO accesDonnees;
     private final int REQUEST_PERMISSION_EXTERNAL_CARD = 1;
     private static String DB_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+ File.separator + "com.gsb.javamedicaments";
-    private static String DB_NAME = "gsb_pharmacies.db";
+    private static String DB_NAME = "data.sqlite";
 
 
 
@@ -88,6 +88,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+
+
+
+
+
+
+
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case REQUEST_PERMISSION_EXTERNAL_CARD:
