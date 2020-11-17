@@ -18,24 +18,24 @@ public class DAO extends SQLiteAssetHelper {
 
     //Pharmacie
     public static final String TABLE_PHARMACIES = "Pharmacie";
-    public static String COLUMN_P_noFiness = "noFiness";
-    public static String COLUMN_P_raisonSociale = "raisonSociale";
-    public static String COLUMN_P_numVoie = "numVoie";
-    public static String COLUMN_P_typeVoie= "typeVoie";
-    public static String COLUMN_P_voie = "voie";
-    public static String COLUMN_P_lieuDitBp = "lieuDitBp";
-    public static String  COLUMN_P_codeDepartement= "codeDepartement";
-    public static String COLUMN_P_codePostal = "codePostal";
-    public static String COLUMN_P_ville = "ville";
-    public static String COLUMN_P_telephone = "telephone";
-    public static String COLUMN_P_telecopie = "telecopie";
-    public static String COLUMN_P_numCategorie = "numCategorie";
-    public static String COLUMN_P_siret = "siret";
-    public static String COLUMN_P_codeAPE= "codeAPE";
+    public static final  String COLUMN_P_noFiness = "noFiness";
+    public static final String COLUMN_P_raisonSociale = "raisonSociale";
+    public static final String COLUMN_P_numVoie = "numVoie";
+    public static final String COLUMN_P_typeVoie= "typeVoie";
+    public static final String COLUMN_P_voie = "voie";
+    public static final String COLUMN_P_lieuDitBp = "lieuDitBp";
+    public static final String  COLUMN_P_codeDepartement= "codeDepartement";
+    public static final String COLUMN_P_codePostal = "codePostal";
+    public static final String COLUMN_P_ville = "ville";
+    public static final String COLUMN_P_telephone = "telephone";
+    public static final String COLUMN_P_telecopie = "telecopie";
+    public static final String COLUMN_P_numCategorie = "numCategorie";
+    public static final String COLUMN_P_siret = "siret";
+    public static final String COLUMN_P_codeAPE= "codeAPE";
     //Departement
     public static final String TABLE_Departement = "Departement";
-    public static String COLUMN_D_codeDpt = "codeDpt";
-    public static String COLUMN_D_nomDpt= "nomDpt";
+    public static final String COLUMN_D_codeDpt = "codeDpt";
+    public static final String COLUMN_D_nomDpt= "nomDpt";
 
     private static final String DATABASE_NAME = "pharmacies.db";
     private static final int DATABASE_VERSION = 2;
@@ -43,26 +43,26 @@ public class DAO extends SQLiteAssetHelper {
 
 
     private String[] allColumnsPharma = {
-            COLUMN_P_noFiness = "noFiness",
-            COLUMN_P_raisonSociale = "raisonSociale",
-            COLUMN_P_numVoie = "numVoie",
-            COLUMN_P_typeVoie= "typeVoie",
-            COLUMN_P_voie = "voie",
-            COLUMN_P_lieuDitBp = "lieuDitBp",
-            COLUMN_P_codeDepartement= "codeDepartement",
-            COLUMN_P_codePostal = "codePostal",
-            COLUMN_P_ville = "ville",
-            COLUMN_P_numCategorie= "numCategorie",
-            COLUMN_P_telephone = "telephone",
-            COLUMN_P_telecopie = "telecopie",
-            COLUMN_P_siret = "siret",
-            COLUMN_P_codeAPE= "codeAPE",
+            COLUMN_P_noFiness ,
+            COLUMN_P_raisonSociale,
+            COLUMN_P_numVoie,
+            COLUMN_P_typeVoie,
+            COLUMN_P_voie,
+            COLUMN_P_lieuDitBp,
+            COLUMN_P_codeDepartement,
+            COLUMN_P_codePostal ,
+            COLUMN_P_ville,
+            COLUMN_P_numCategorie ,
+            COLUMN_P_telephone,
+            COLUMN_P_telecopie ,
+            COLUMN_P_siret ,
+            COLUMN_P_codeAPE,
     };
 
 
     private String[] allColumnsDepartement = {
-            COLUMN_D_nomDpt="nomDpt",
-            COLUMN_D_codeDpt="codeDpt",
+            COLUMN_D_nomDpt,
+            COLUMN_D_codeDpt,
     };
 
 
@@ -139,5 +139,5 @@ public class DAO extends SQLiteAssetHelper {
         }
         c.close();
     }
-    
+
 }
