@@ -56,7 +56,7 @@ public class DAO extends SQLiteAssetHelper {
             COLUMN_M_numCategorie = "numCategorie";
             COLUMN_M_siret = "siret";
             COLUMN_M_codeAPE= "codeAPE";
-}
+    }
 
 
     private String[] allColumnsDepartement = {

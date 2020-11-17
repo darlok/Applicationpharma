@@ -3,6 +3,7 @@ package Modele;
 public class Pharmacie {
     private String noFiness, raisonSociale,numVoie,typeVoie,voie,lieuDitBp,codeDepartement,codePostal,Ville,telephone,telecopie,siret;
     private Integer numCategorie;
+    private Pharmacie laPharmacie;
     public Pharmacie(String noFiness, String raisonSociale,String numVoie,String typeVoie, String voie,String lieuDitBp,String codeDepartement,String codePostal,String Ville,String telephone,String telecopie,Integer numCategorie,String siret){
         this.codeDepartement=codeDepartement;
         this.codePostal=codePostal;
@@ -96,6 +97,15 @@ public class Pharmacie {
 
     public void setNumCategorie()
     {this.numCategorie= numCategorie;}
+
+    public Pharmacie getLeMedicament() {
+        return laPharmacie ;
+    }
+
+    public void setLeMedicament(Pharmacie laPharmacie) {
+        this.laPharmacie = laPharmacie;
+    }
+
 
 
 }

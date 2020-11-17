@@ -21,7 +21,7 @@ public class PharmacieAdapter extends RecyclerView.Adapter<PharmacieViewHolder> 
 
     public PharmacieAdapter(DAO accesDonnees,String RaisonSoiraisonSociale){
         this.accesDonnees=accesDonnees;
-        this.lesPharmacies=accesDonnees.get
+        this.lesPharmacies=accesDonnees
     }
 
 
