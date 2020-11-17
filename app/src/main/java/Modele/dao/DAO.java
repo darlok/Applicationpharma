@@ -96,18 +96,18 @@ public class DAO extends SQLiteAssetHelper {
         return p;
     }
 
-    public Departement getDepartementParcodeDpt(String codeDpt){
-        Cursor c = database.query(TABLE_Departement,
-                allColumnsDepartement,  COLUMN_D_codeDpt+ " LIKE \"%" + codeDpt +"%\"", null, null, null, null);
+    public Pharmacie getDepartementParcodeDpt(String codeDpt){
+        Cursor c = database.query(TABLE_PHARMACIES,
+                allColumnsPharma,  COLUMN_P_codeDepartement+ " LIKE \"%" + codeDpt +"%\"", null, null, null, null);
 
-        Departement m = null;
+        Pharmacie p = null;
         if (c.moveToNext()){
-            m = ligneToDepartement(c);
+            p = ligneToPharmacies(c);
             c.close();
         }
 
         c.close();
-        return m;
+        return p;
 
     }
     public ArrayList<Departement> getDepartementParNom(String nom){
@@ -127,17 +127,17 @@ public class DAO extends SQLiteAssetHelper {
         c.close();
         return lesDepartement;
     }
-    private  void chargeLaPharmacie(Departement m){
-        Cursor c = database.query(TABLE_Departement,
-                allColumnsDepartement,COLUMN_D_codeDpt+" LIKE \"%" + m.getCodeDpt()+"%\"", null, null, null, null);
+
+    private void chargeLesPharmacies(Departement d) {
+        Cursor c = database.query(TABLE_PHARMACIES,
+                allColumnsPharma,  COLUMN_D_codeDpt+ " LIKE \"%" + d.getCodeDpt()+"%\"", null, null, null, null);
+
         while (c.moveToNext()){
-
+            Pharmacie p = ligneToPharmacies(c);
+            d.setLaPharmacie(p);
+            p.setLeDepartement(d);
         }
+        c.close();
     }
-
-
-
-
-
-
+    
 }
