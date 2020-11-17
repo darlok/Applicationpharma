@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void gererViewRecycler()
     {
-        lesPharmacies.add(new Pharmacie("010002285","PHARMACIE DU CHAMP DE MARS ",	"9", 	"R ",	"ALEXANDRE BERARD ","","01 ","01500 ","AMBERIEU EN BUGEY ",	"0474380226 ","0474382135",620 ,	"39352920100013" 	));
+        lesPharmacies.add(new Pharmacie("010002285","PHARMACIE DU CHAMP DE MARS ",	"9", 	"R ",	"ALEXANDRE BERARD ","","01 ","01500 ","AMBERIEU EN BUGEY ",	"0474380226 ","0474382135","620 ",	"39352920100013" 	));
 
         PharmacierecyclerView = (RecyclerView) findViewById(R.id.activity_main_Pharmacie_recyclerview);
 
