@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.applicationpharma.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import Modele.Pharmacie;
@@ -20,9 +19,9 @@ public class PharmacieAdapter extends RecyclerView.Adapter<PharmacieViewHolder> 
     private List<Pharmacie>lesPharmacies;
     private DAO accesDonnees;
 
-    public PharmacieAdapter(DAO accesDonnees, ArrayList<Pharmacie> lesPharmacies){
-        this.accesDonnees=accesDonnees;
-        this.lesPharmacies=lesPharmacies;
+    public PharmacieAdapter(List<Pharmacie>lesPharmacies, DAO accesDonnees,String RaisonSoiraisonSociale){
+        this.accesDonnees = accesDonnees;
+        this.lesPharmacies = lesPharmacies;
     }
 
 

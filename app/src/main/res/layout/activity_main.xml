@@ -40,3 +40,4 @@
         android:text="Large Text"
         android:id="@+id/departement_name" />
 </LinearLayout>
+
