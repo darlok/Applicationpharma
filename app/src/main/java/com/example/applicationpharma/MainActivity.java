@@ -4,20 +4,16 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -27,7 +23,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import Modele.Departement;
 import Modele.Pharmacie;
 import Modele.dao.DAO;
 import vue.adapter.PharmacieAdapter;
@@ -36,16 +31,15 @@ public class MainActivity extends AppCompatActivity {
 
     private Pharmacie Pharma;
     private List<Pharmacie>lesPharmacies;
-    private List<Departement>lesDepartements;
     private RecyclerView PharmacierecyclerView;
-    private RecyclerView DepartementrecyclerView;
     private DAO accesDonnees;
     private final int REQUEST_PERMISSION_EXTERNAL_CARD = 1;
-    private static String DB_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+ File.separator + "com.gsb.javamedicaments";
-    private static String DB_NAME = "bdd_pharma.sqlite";
+    private static String DB_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+ File.separator + "pharma";
+    private static String DB_NAME = "pharmacies.db";
+
+
 
     PharmacieAdapter monAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,17 +64,17 @@ public class MainActivity extends AppCompatActivity {
 
         this.gererViewRecycler();
 
+
     }
+
 
     private void gererViewRecycler()
     {
         lesPharmacies.add(new Pharmacie("010002285","PHARMACIE DU CHAMP DE MARS ",	"9", 	"R ",	"ALEXANDRE BERARD ","","01 ","01500 ","AMBERIEU EN BUGEY ",	"0474380226 ","0474382135",620 ,	"39352920100013" 	));
-        //etudiantsInscrits.add(new Etudiant("TERIEUR","Alex"));
-        //etudiantsInscrits.add(new Etudiant("KEURIEN","Iris"));
 
-        DepartementrecyclerView = (RecyclerView) findViewById(R.id.activity_main_Departement_recyclerview);
         PharmacierecyclerView = (RecyclerView) findViewById(R.id.activity_main_Pharmacie_recyclerview);
-        PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+       PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         monAdapter = new PharmacieAdapter(lesPharmacies);
 
@@ -88,6 +82,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+
+
+
+
+
+
+
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case REQUEST_PERMISSION_EXTERNAL_CARD:
@@ -146,6 +147,8 @@ public class MainActivity extends AppCompatActivity {
                 new String[]{permissionName}, permissionRequestCode);
     }
 
+
+
     private void copyDataBase() {
 
         //Open your local db as the input stream
@@ -170,5 +173,4 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
 }
