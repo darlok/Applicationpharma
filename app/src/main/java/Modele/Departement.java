@@ -1,8 +1,11 @@
 package Modele;
 
+import java.util.ArrayList;
+
 public class Departement {
     private String codeDpt,nomDpt;
     private Departement leDepartement;
+    private ArrayList<Pharmacie>LesPharmacies;
     public Departement(String codeDpt,String nomDpt){
         this.codeDpt=codeDpt;
         this.nomDpt=nomDpt;
@@ -21,4 +24,11 @@ public class Departement {
         this.leDepartement = leDepartement;
     }
 
+    public void setLaPharmacie(Pharmacie laPharmacie) {
+        this.LesPharmacies.add(laPharmacie);
+    }
+
+    public ArrayList<Pharmacie> getLesPharmacies() {
+        return getLesPharmacies();
+    }
 }

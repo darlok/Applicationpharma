@@ -4,6 +4,8 @@ public class Pharmacie {
     private String noFiness, raisonSociale,numVoie,typeVoie,voie,lieuDitBp,codeDepartement,codePostal,Ville,telephone,telecopie,siret;
     private Integer numCategorie;
     private Pharmacie laPharmacie;
+    private Departement leDepartement;
+
     public Pharmacie(String noFiness, String raisonSociale,String numVoie,String typeVoie, String voie,String lieuDitBp,String codeDepartement,String codePostal,String Ville,String telephone,String telecopie,Integer numCategorie,String siret){
         this.codeDepartement=codeDepartement;
         this.codePostal=codePostal;
@@ -98,12 +100,21 @@ public class Pharmacie {
     public void setNumCategorie()
     {this.numCategorie= numCategorie;}
 
-    public Pharmacie getLeMedicament() {
+    public Pharmacie getLaPharmacie() {
         return laPharmacie ;
     }
 
-    public void setLeMedicament(Pharmacie laPharmacie) {
+    public void setLaPharmacie(Pharmacie laPharmacie) {
         this.laPharmacie = laPharmacie;
+    }
+
+
+    public Departement getLeDepartement() {
+        return leDepartement;
+    }
+
+    public void setLeDepartement(Departement leDepartement) {
+        this.leDepartement = leDepartement;
     }
 
 

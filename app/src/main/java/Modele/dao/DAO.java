@@ -8,6 +8,11 @@ import android.util.Log;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import Modele.Departement;
 import Modele.Pharmacie;
 
@@ -81,33 +86,10 @@ public class DAO extends SQLiteAssetHelper {
         this.close();
     }
 
-    private void chargeLeMedicament(Pharmacie p) {
-        //je récupère le code cis du médicament correspondant au codeCIP de la présentation en paramètres
-        Cursor c = database.query(TABLE_PHARMACIES,
-                allColumnsPharma,  COLUMN_D_codeDpt + " = \"" + p.getCodeDepartement()+"\"", null, null, null, null);
 
-        String codeDpt = "";
-        Log.e("t",p.getCodeDepartement() + " " +c.getCount());
-        if (c.moveToNext()){
-            codeDpt = c.getString(c.getColumnIndex(COLUMN_D_codeDpt));
-        }
-        c.close();
 
-        Departement d = this.getDepartementParDpt(codeDpt);
-        d.setLeDepartement(p);
-        p.setLeMedicament(d);
-    }
-    private void chargeLesPharmacies(Departement d) {
-        Cursor c = database.query(TABLE_PHARMACIES,
-                allColumnsPharma,  COLUMN_M_codeDepartement + " LIKE \"%" + d.getCodeDpt()+"%\"", null, null, null, null);
 
-        while (c.moveToNext()){
-            Pharmacie p = ligneToPharmacies(c);
-            d.setLeDepartement(p);
-            p.setLeMedicament(d);
-        }
-        c.close();
-    }
+
 
 
 }
