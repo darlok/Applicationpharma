@@ -27,5 +27,4 @@ public class PharmacieViewHolder extends RecyclerView.ViewHolder {
         codeDepartement.setText(Pharma.getCodeDepartement());
     }
 
-
 }

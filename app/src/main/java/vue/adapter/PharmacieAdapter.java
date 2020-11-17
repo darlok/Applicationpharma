@@ -20,8 +20,8 @@ public class PharmacieAdapter extends RecyclerView.Adapter<PharmacieViewHolder> 
     private DAO accesDonnees;
 
     public PharmacieAdapter(DAO accesDonnees,String RaisonSoiraisonSociale){
-        this.accesDonnees=accesDonnees;
-        this.lesPharmacies=accesDonnees
+        this.accesDonnees = accesDonnees;
+        this.lesPharmacies = accesDonnees
     }
 
 

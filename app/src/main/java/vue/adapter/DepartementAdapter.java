@@ -18,7 +18,7 @@ public class DepartementAdapter extends RecyclerView.Adapter<DepartementViewHold
     private List<Departement>lesDepartements;
 
     public DepartementAdapter(List<Departement>lesDepartements){
-        this.lesDepartements=lesDepartements;
+        this.lesDepartements = lesDepartements;
     }
     public DepartementViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
     {
