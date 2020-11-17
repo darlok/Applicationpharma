@@ -97,5 +97,4 @@ public class Pharmacie {
     public void setNumCategorie()
     {this.numCategorie= numCategorie;}
 
-
 }
