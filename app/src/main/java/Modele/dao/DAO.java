@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
+import java.util.ArrayList;
+
 import Modele.Departement;
 import Modele.Pharmacie;
 
@@ -94,7 +96,7 @@ public class DAO extends SQLiteAssetHelper {
         return p;
     }
 
-    public Departement getDepartement(String codeDpt){
+    public Departement getDepartementParcodeDpt(String codeDpt){
         Cursor c = database.query(TABLE_Departement,
                 allColumnsDepartement,  COLUMN_D_codeDpt+ " LIKE \"%" + codeDpt +"%\"", null, null, null, null);
 
@@ -107,6 +109,30 @@ public class DAO extends SQLiteAssetHelper {
         c.close();
         return m;
 
+    }
+    public ArrayList<Departement> getDepartementParNom(String nom){
+        ArrayList<Departement> lesDepartement = new ArrayList();
+
+        Cursor c = database.query(TABLE_Departement,
+                allColumnsDepartement,  COLUMN_D_nomDpt+ " LIKE \"%" + nom +"%\"", null, null, null, null);
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+            Departement m = ligneToDepartement(c);
+            lesDepartement.add(m);
+            c.moveToNext();
+        }
+
+        c.close();
+        return lesDepartement;
+    }
+    private  void chargeLaPharmacie(Departement m){
+        Cursor c = database.query(TABLE_Departement,
+                allColumnsDepartement,COLUMN_D_codeDpt+" LIKE \"%" + m.getCodeDpt()+"%\"", null, null, null, null);
+        while (c.moveToNext()){
+
+        }
     }
 
 
