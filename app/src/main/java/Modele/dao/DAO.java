@@ -93,12 +93,9 @@ public class DAO extends SQLiteAssetHelper {
         }
         c.close();
 
-        //récupère le médicament correspondant au code cis
-        //la méthode appelée est programmée dans la suite de cette classe, elle crée le médicament
-        //et tous ses liens en profondeur
         Departement d = this.getDepartementParDpt(codeDpt);
-        d.setLaPharmacie(p);
-        p.setLeDepartement(d);
+        d.setLeDepartement(p);
+        p.setLeMedicament(d);
     }
     private void chargeLesPharmacies(Departement d) {
         Cursor c = database.query(TABLE_PHARMACIES,
@@ -106,8 +103,8 @@ public class DAO extends SQLiteAssetHelper {
 
         while (c.moveToNext()){
             Pharmacie p = ligneToPharmacies(c);
-            d.setLaPharmacies(p);
-            p.setLeDepartement(d);
+            d.setLeDepartement(p);
+            p.setLeMedicament(d);
         }
         c.close();
     }
