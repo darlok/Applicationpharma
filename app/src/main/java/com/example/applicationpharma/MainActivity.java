@@ -23,23 +23,32 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import Modele.Departement;
 import Modele.Pharmacie;
 import Modele.dao.DAO;
+import vue.adapter.DepartementAdapter;
 import vue.adapter.PharmacieAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     private Pharmacie Pharma;
+    private Departement Dep;
+
     private List<Pharmacie>lesPharmacies;
+    private List<Departement>lesDepartements;
+
     private RecyclerView PharmacierecyclerView;
+    private RecyclerView DepartementrecyclerView;
+
     private DAO accesDonnees;
     private final int REQUEST_PERMISSION_EXTERNAL_CARD = 1;
     private static String DB_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+ File.separator + "pharma";
     private static String DB_NAME = "pharmacies.db";
 
 
+    DepartementAdapter monAdapterDep;
+    PharmacieAdapter monAdapterPharma;
 
-    PharmacieAdapter monAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,36 +67,46 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Permission (already) Granted!", Toast.LENGTH_SHORT).show();
         }
 
-        lesPharmacies= new ArrayList<Pharmacie>();
+        lesPharmacies = new ArrayList<Pharmacie>();
+        lesDepartements = new ArrayList<Departement>();
 
         this.accesDonnees= new DAO(this);
 
         this.gererViewRecycler();
 
-
     }
-
 
     private void gererViewRecycler()
     {
-        lesPharmacies.add(new Pharmacie("010002285","PHARMACIE DU CHAMP DE MARS ",	"9", 	"R ",	"ALEXANDRE BERARD ","","01 ","01500 ","AMBERIEU EN BUGEY ",	"0474380226 ","0474382135","620 ",	"39352920100013" 	));
+        //DEPARTEMENT
+        lesDepartements.add(new Departement("15", "Cantal"));
+        DepartementrecyclerView = (RecyclerView) findViewById(R.id.activity_main_Departement_recyclerview);
+        DepartementrecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        monAdapterDep = new DepartementAdapter(lesDepartements);
+        DepartementrecyclerView.setAdapter(monAdapterDep);
 
+        //PHARMACIE
+        lesPharmacies.add(new Pharmacie (
+                "010002285",
+                "PHARMACIE DU CHAMP DE MARS ",
+                "9",
+                "R ",
+                "ALEXANDRE BERARD ",
+                "",
+                "01 ",
+                "01500 ",
+                "AMBERIEU EN BUGEY ",
+                "0474380226 ",
+                "0474382135",
+                "620" ,
+                "39352920100013" 	));
         PharmacierecyclerView = (RecyclerView) findViewById(R.id.activity_main_Pharmacie_recyclerview);
-
-       PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        monAdapter = new PharmacieAdapter(lesPharmacies);
-
-        PharmacierecyclerView.setAdapter(monAdapter);
+        PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        monAdapterPharma = new PharmacieAdapter(lesPharmacies);
+        PharmacierecyclerView.setAdapter(monAdapterPharma);
     }
 
     @Override
-
-
-
-
-
-
 
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {

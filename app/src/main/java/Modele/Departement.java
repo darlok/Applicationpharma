@@ -13,7 +13,7 @@ public class Departement {
     public String getCodeDpt(){return codeDpt;}
     public void setCodeDpt(){this.codeDpt=codeDpt;}
 
-    public String getNomDpt(){return codeDpt;}
+    public String getNomDpt(){return nomDpt;}
     public void  setNomDpt(){this.codeDpt=codeDpt;}
 
     public Departement getLeDepartement() {
