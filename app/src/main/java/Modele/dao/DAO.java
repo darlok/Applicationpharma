@@ -113,6 +113,57 @@ public class DAO extends SQLiteAssetHelper {
         c.close();
         return lesDepartement;
     }
+    public ArrayList<Pharmacie> getPharmaciesParVille(String ville){
+        ArrayList<Pharmacie> lesPharmacies = new ArrayList();
+
+        Cursor c = database.query(TABLE_PHARMACIES,
+                allColumnsPharma,  COLUMN_P_ville+ " LIKE \"%" + ville +"%\"", null, null, null, null);
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+            Pharmacie m = ligneToPharmacies(c);
+            lesPharmacies.add(m);
+            c.moveToNext();
+        }
+
+        c.close();
+        return lesPharmacies;
+    }
+    public ArrayList<Pharmacie> getPharmaciesParcodepostal(String codePtl){
+        ArrayList<Pharmacie> lesPharmacies = new ArrayList();
+
+        Cursor c = database.query(TABLE_PHARMACIES,
+                allColumnsPharma,  COLUMN_P_codePostal+ " LIKE \"%" + codePtl +"%\"", null, null, null, null);
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+            Pharmacie m = ligneToPharmacies(c);
+            lesPharmacies.add(m);
+            c.moveToNext();
+        }
+
+        c.close();
+        return lesPharmacies;
+    }
+    public ArrayList<Pharmacie> getPharmaciesParDepartement(String codeDpt){
+        ArrayList<Pharmacie> lesPharmacies = new ArrayList();
+
+        Cursor c = database.query(TABLE_PHARMACIES,
+                allColumnsPharma,  COLUMN_P_codeDepartement+ " LIKE \"%" + codeDpt+"%\"", null, null, null, null);
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+            Pharmacie m = ligneToPharmacies(c);
+            lesPharmacies.add(m);
+            c.moveToNext();
+        }
+
+        c.close();
+        return lesPharmacies;
+    }
     public ArrayList<Departement> getDepartementParCodedpt(String codeDpt){
         ArrayList<Departement> lesDepartement = new ArrayList();
 

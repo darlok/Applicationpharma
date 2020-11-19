@@ -12,15 +12,15 @@ import com.example.applicationpharma.R;
 import java.util.List;
 
 import Modele.Pharmacie;
-import Modele.dao.DAO;
+import vue.fragment.RecyclerViewClickListener;
 import vue.holder.PharmacieViewHolder;
 
 public class PharmacieAdapter extends RecyclerView.Adapter<PharmacieViewHolder> {
     private List<Pharmacie>lesPharmacies;
-    private DAO accesDonnees;
+    private RecyclerViewClickListener mListener;
 
-    public PharmacieAdapter(List<Pharmacie>lesPharmacies, DAO accesDonnees,String RaisonSoiraisonSociale){
-        this.accesDonnees = accesDonnees;
+    public PharmacieAdapter(List<Pharmacie>lesPharmacies, RecyclerViewClickListener listener){
+        this.mListener=listener;
         this.lesPharmacies = lesPharmacies;
     }
 

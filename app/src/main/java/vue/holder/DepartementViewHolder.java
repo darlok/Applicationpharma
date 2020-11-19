@@ -1,6 +1,7 @@
 package vue.holder;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ public class DepartementViewHolder extends RecyclerView.ViewHolder implements Vi
     private TextView nomText;
     private  TextView codeDep;
     private RecyclerViewClickListener mListener;
+    private Button bt;
 
     public DepartementViewHolder(View itemView, RecyclerViewClickListener listerner){
         super((itemView));
@@ -21,7 +23,9 @@ public class DepartementViewHolder extends RecyclerView.ViewHolder implements Vi
 
         nomText = itemView.findViewById(R.id.activity_main_Departement_nom);
         codeDep = itemView.findViewById(R.id.activity_main_Departement_code);
-        itemView.setOnClickListener(this);
+        bt = itemView.findViewById(R.id.activity_main_Departement_button);
+        //itemView.setOnClickListener(this);
+        bt.setOnClickListener(this);
     }
 
     public  void  bind(Departement Depart){

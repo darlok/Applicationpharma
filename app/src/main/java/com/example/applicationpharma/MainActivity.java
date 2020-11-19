@@ -2,6 +2,7 @@ package com.example.applicationpharma;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
@@ -112,7 +113,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
     @Override
     public void onListItemClick(int position) {
-        Toast.makeText(this,lesDepartements.get(position).getCodeDpt(),Toast.LENGTH_SHORT);
+        //Toast.makeText(MainActivity.this,lesDepartements.get(position).getNomDpt(), Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(MainActivity.this,ActivityPharmacie.class);
+        i.putExtra("codeDpt",lesDepartements.get(position).getCodeDpt());
+        startActivity(i);
 
     }
 
