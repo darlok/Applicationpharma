@@ -12,7 +12,6 @@
         android:id="@+id/activity_main_Departement_nom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:padding="20dip"
         android:text="Large Text"
         />
@@ -22,10 +21,18 @@
         android:layout_toRightOf="@id/activity_main_Departement_nom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:padding="20dip"
+        android:padding="2dip"
         android:layout_weight="1"
         android:text="Large Text"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:padding="1dip"
+        android:text="Visualiser"
         />
 
 </LinearLayout>
