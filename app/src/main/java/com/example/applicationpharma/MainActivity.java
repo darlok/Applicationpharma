@@ -22,6 +22,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PrimitiveIterator;
 
 import Modele.Departement;
 import Modele.Pharmacie;
@@ -46,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private static String DB_NAME = "pharmacies.db";
 
 
-    DepartementAdapter monAdapterDep;
-    PharmacieAdapter monAdapterPharma;
+    private DepartementAdapter monAdapterDep;
+    private PharmacieAdapter monAdapterPharma;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         lesDepartements = accesDonnees.chargeLesDepartements();
         DepartementrecyclerView = (RecyclerView) findViewById(R.id.activity_main_Departement_recyclerview);
         DepartementrecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        monAdapterDep = new DepartementAdapter(lesDepartements);
+        monAdapterDep = new DepartementAdapter(lesDepartements,this);
         DepartementrecyclerView.setAdapter(monAdapterDep);
 
         //PHARMACIE
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 "39352920100013" 	));
 
          */
-        lesPharmacies=accesDonnees.chargeLesPharmacies();
+      //  lesPharmacies=accesDonnees.chargeLesPharmacies();
         PharmacierecyclerView = (RecyclerView) findViewById(R.id.activity_main_Pharmacie_recyclerview);
         PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
         monAdapterPharma = new PharmacieAdapter(lesPharmacies);
