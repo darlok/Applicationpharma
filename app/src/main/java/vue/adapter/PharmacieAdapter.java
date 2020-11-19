@@ -32,7 +32,7 @@ public class PharmacieAdapter extends RecyclerView.Adapter<PharmacieViewHolder> 
     {
         Context context = viewGroup.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.activity_main_pharmacie, viewGroup, false);
+        View view = inflater.inflate(R.layout.activity_pharmacie, viewGroup, false);
         return new PharmacieViewHolder(view);
     }
     @Override
