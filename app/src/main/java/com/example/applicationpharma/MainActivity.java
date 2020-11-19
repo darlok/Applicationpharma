@@ -22,15 +22,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PrimitiveIterator;
 
 import Modele.Departement;
 import Modele.Pharmacie;
 import Modele.dao.DAO;
 import vue.adapter.DepartementAdapter;
 import vue.adapter.PharmacieAdapter;
+import vue.fragment.RecyclerViewClickListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewClickListener {
 
     private Pharmacie Pharma;
     private Departement Dep;
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         DepartementrecyclerView.setAdapter(monAdapterDep);
 
         //PHARMACIE
-        /*lesPharmacies.add(new Pharmacie (
+        lesPharmacies.add(new Pharmacie (
                 "010002285",
                 "PHARMACIE DU CHAMP DE MARS ",
                 "9",
@@ -102,12 +102,18 @@ public class MainActivity extends AppCompatActivity {
                 "620" ,
                 "39352920100013" 	));
 
-         */
-      //  lesPharmacies=accesDonnees.chargeLesPharmacies();
+
+        // lesPharmacies=accesDonnees.chargeLesPharmacies();
         PharmacierecyclerView = (RecyclerView) findViewById(R.id.activity_main_Pharmacie_recyclerview);
         PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
         monAdapterPharma = new PharmacieAdapter(lesPharmacies);
         PharmacierecyclerView.setAdapter(monAdapterPharma);
+    }
+
+    @Override
+    public void onListItemClick(int position) {
+        Toast.makeText(this,lesDepartements.get(position).getCodeDpt(),Toast.LENGTH_SHORT);
+
     }
 
     @Override
@@ -197,4 +203,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 }

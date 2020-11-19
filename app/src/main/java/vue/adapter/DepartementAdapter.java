@@ -30,7 +30,6 @@ public class DepartementAdapter extends RecyclerView.Adapter<DepartementViewHold
         Context context = viewGroup.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.activity_main_departement, viewGroup, false);
-        //View view1 = inflater.inflate(R.layout.activity_main_departement)
         return new DepartementViewHolder(view,mListener);
     }
     @Override
