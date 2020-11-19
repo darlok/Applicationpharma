@@ -14,7 +14,7 @@ public class Departement implements Parcelable {
         this.nomDpt=nomDpt;
     }
 
-    protected Departement(Parcel in) {
+    public Departement(Parcel in) {
         codeDpt = in.readString();
         nomDpt = in.readString();
         leDepartement = in.readParcelable(Departement.class.getClassLoader());

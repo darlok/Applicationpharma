@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private Pharmacie Pharma;
     private Departement Dep;
 
-    private List<Pharmacie>lesPharmacies;
-    private List<Departement>lesDepartements;
+    private List<Pharmacie> lesPharmacies;
+    private List<Departement> lesDepartements;
 
     private RecyclerView PharmacierecyclerView;
     private RecyclerView DepartementrecyclerView;
@@ -79,7 +79,9 @@ public class MainActivity extends AppCompatActivity {
     private void gererViewRecycler()
     {
         //DEPARTEMENT
-        lesDepartements.add(new Departement("15", "Cantal"));
+        lesDepartements = accesDonnees.chargeLesDepartements();
+        //lesDepartements.add(new Departement("15","Cantal"));
+        //lesDepartements.add(new Departement("46","Lot"));
         DepartementrecyclerView = (RecyclerView) findViewById(R.id.activity_main_Departement_recyclerview);
         DepartementrecyclerView.setLayoutManager(new LinearLayoutManager(this));
         monAdapterDep = new DepartementAdapter(lesDepartements);

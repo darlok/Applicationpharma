@@ -128,27 +128,36 @@ public class DAO extends SQLiteAssetHelper {
         return lesDepartement;
     }
 
-    private void chargeLesPharmacies(Departement d) {
+    private ArrayList<Pharmacie> chargeLesPharmacies(Departement d)
+    {
+        ArrayList<Pharmacie> lesPharmacies = new ArrayList<Pharmacie>();
         Cursor c = database.query(TABLE_PHARMACIES,
                 allColumnsPharma,  COLUMN_D_codeDpt+ " LIKE \"%" + d.getCodeDpt()+"%\"", null, null, null, null);
 
         while (c.moveToNext()){
             Pharmacie p = ligneToPharmacies(c);
-            d.setLaPharmacie(p);
+            //d.setLaPharmacie(p);
             p.setLeDepartement(d);
+            lesPharmacies.add(p);
         }
         c.close();
+        return lesPharmacies;
     }
-    private void chargeLesDepartement(Pharmacie p) {
+    public ArrayList<Departement> chargeLesDepartements()
+    {
+        ArrayList<Departement> lesDepartements = new ArrayList<Departement>();
         Cursor c = database.query(TABLE_Departement,
-                allColumnsDepartement,  COLUMN_D_codeDpt+ " LIKE \"%" + p.getCodeDepartement()+"%\"", null, null, null, null);
+                allColumnsDepartement,  null, null, null, null, null);
 
         while (c.moveToNext()){
             Departement d = ligneToDepartement(c);
-            d.setLeDepartement(d);
+            //d.setLeDepartement(d);
+            lesDepartements.add(d);
         }
         c.close();
+        return lesDepartements;
     }
+
     public ArrayList<Pharmacie> getPharmacieParNomDpt(String nom){
         ArrayList<Pharmacie> lesPharmacies = new ArrayList();
 
