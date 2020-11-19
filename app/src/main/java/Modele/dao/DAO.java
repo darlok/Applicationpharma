@@ -149,5 +149,37 @@ public class DAO extends SQLiteAssetHelper {
         }
         c.close();
     }
+    public ArrayList<Pharmacie> getPharmacieParNomDpt(String nom){
+        ArrayList<Pharmacie> lesPharmacies = new ArrayList();
+
+        Cursor c = database.query(TABLE_PHARMACIES,
+                allColumnsPharma, COLUMN_P_raisonSociale+ " LIKE \"%" + nom +"%\"", null, null, null, null);
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+            Pharmacie p = ligneToPharmacies(c);
+            lesPharmacies.add(p);
+            c.moveToNext();
+        }
+
+        c.close();
+        return lesPharmacies;
+    }
+    public Departement getPharmaciesParcodeDpt(String codeDpt){
+        Cursor c = database.query(TABLE_Departement,
+                allColumnsDepartement,  COLUMN_D_codeDpt+ " LIKE \"%" + codeDpt +"%\"", null, null, null, null);
+
+        Departement d = null;
+        if (c.moveToNext()){
+            d = ligneToDepartement(c);
+            c.close();
+        }
+
+        c.close();
+        return d;
+
+    }
+
 
 }
