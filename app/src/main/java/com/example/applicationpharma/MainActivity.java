@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +18,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,6 +27,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PrimitiveIterator;
 
 import Modele.Departement;
 import Modele.Pharmacie;
@@ -41,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
     private RecyclerView PharmacierecyclerView;
     private RecyclerView DepartementrecyclerView;
+    private TextView codeDep;
+    private View view;
 
     private DAO accesDonnees;
     private final int REQUEST_PERMISSION_EXTERNAL_CARD = 1;
@@ -103,7 +110,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
                 "620" ,
                 "39352920100013" 	));
 
-
         // lesPharmacies=accesDonnees.chargeLesPharmacies();
         PharmacierecyclerView = (RecyclerView) findViewById(R.id.activity_main_Pharmacie_recyclerview);
         PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -117,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         Intent i = new Intent(MainActivity.this,ActivityPharmacie.class);
         i.putExtra("codeDpt",lesDepartements.get(position).getCodeDpt());
         startActivity(i);
-
     }
 
     @Override
@@ -132,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
                     String state = Environment.getExternalStorageState();
                     if(Environment.MEDIA_MOUNTED.equals(state)){
                         // Both Read and write operations available
-                        Log.i("t2", "Il y a bien une carte externe");
+                        Log.i("t2", "Il y a bien une carte externe.");
 
                         //je crée le répertoire pour placer la base de données sur la carte externe
                         File appDir = new File(DB_PATH);

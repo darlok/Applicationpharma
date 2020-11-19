@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="20dip">
 
     <LinearLayout
@@ -14,7 +15,7 @@
             android:layout_width="56dp"
             android:layout_height="54dp"
             android:gravity="center"
-            android:text="Nom: "
+            android:text="Nom : "
             android:textStyle="bold" />
 
         <TextView
@@ -41,7 +42,8 @@
             android:layout_width="56dp"
             android:layout_height="54dp"
             android:gravity="center"
-            android:text="coordonner: "
+            android:padding="-20dip"
+            android:text="Coord. : "
             android:textStyle="bold" />
 
         <TextView
@@ -64,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:padding="1dip"
+        android:layout_centerInParent="true"
         android:text="Localiser" />
 
 </LinearLayout>

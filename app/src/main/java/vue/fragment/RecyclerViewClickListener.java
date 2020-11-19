@@ -1,5 +1,8 @@
 package vue.fragment;
 
-public interface RecyclerViewClickListener {
-    void   onListItemClick(int position);
+import android.view.View;
+
+public interface RecyclerViewClickListener
+{
+    void onListItemClick(int position);
 }
