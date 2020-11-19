@@ -1,6 +1,9 @@
 package Modele;
 
-public class Pharmacie {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Pharmacie implements Parcelable {
     private String noFiness, raisonSociale,numVoie,typeVoie,voie,lieuDitBp,codeDepartement,codePostal,Ville,telephone,telecopie,siret,numCategorie;
     private Pharmacie laPharmacie;
     private Departement leDepartement;
@@ -20,6 +23,35 @@ public class Pharmacie {
         this.Ville=Ville;
         this.voie=voie;
     }
+
+    protected Pharmacie(Parcel in) {
+        noFiness = in.readString();
+        raisonSociale = in.readString();
+        numVoie = in.readString();
+        typeVoie = in.readString();
+        voie = in.readString();
+        lieuDitBp = in.readString();
+        codeDepartement = in.readString();
+        codePostal = in.readString();
+        Ville = in.readString();
+        telephone = in.readString();
+        telecopie = in.readString();
+        siret = in.readString();
+        numCategorie = in.readString();
+        laPharmacie = in.readParcelable(Pharmacie.class.getClassLoader());
+    }
+
+    public static final Creator<Pharmacie> CREATOR = new Creator<Pharmacie>() {
+        @Override
+        public Pharmacie createFromParcel(Parcel in) {
+            return new Pharmacie(in);
+        }
+
+        @Override
+        public Pharmacie[] newArray(int size) {
+            return new Pharmacie[size];
+        }
+    };
 
     public String getNoFiness()
     { return noFiness; }
@@ -107,5 +139,26 @@ public class Pharmacie {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(noFiness);
+        dest.writeString(raisonSociale);
+        dest.writeString(numVoie);
+        dest.writeString(typeVoie);
+        dest.writeString(voie);
+        dest.writeString(lieuDitBp);
+        dest.writeString(codeDepartement);
+        dest.writeString(codePostal);
+        dest.writeString(Ville);
+        dest.writeString(telephone);
+        dest.writeString(telecopie);
+        dest.writeString(siret);
+        dest.writeString(numCategorie);
+        dest.writeParcelable(laPharmacie, flags);
+    }
 }

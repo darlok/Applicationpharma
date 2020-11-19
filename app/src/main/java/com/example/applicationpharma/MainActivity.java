@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }else{
                             Log.i("CreateDir","App dir already exists");
+                            copyDataBase();
                         }
                     } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)){
                         // Only Read operation available

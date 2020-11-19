@@ -139,5 +139,15 @@ public class DAO extends SQLiteAssetHelper {
         }
         c.close();
     }
+    private void chargeLesDepartement(Pharmacie p) {
+        Cursor c = database.query(TABLE_Departement,
+                allColumnsDepartement,  COLUMN_D_codeDpt+ " LIKE \"%" + p.getCodeDepartement()+"%\"", null, null, null, null);
+
+        while (c.moveToNext()){
+            Departement d = ligneToDepartement(c);
+            d.setLeDepartement(d);
+        }
+        c.close();
+    }
 
 }
