@@ -46,15 +46,7 @@ public class Departement implements Parcelable {
     public void setLeDepartement(Departement leDepartement) {
         this.leDepartement = leDepartement;
     }
-
-    public void setLaPharmacie(Pharmacie laPharmacie) {
-        this.LesPharmacies.add(laPharmacie);
-    }
-
-    public ArrayList<Pharmacie> getLesPharmacies() {
-        return getLesPharmacies();
-    }
-
+    
     @Override
     public int describeContents() {
         return 0;

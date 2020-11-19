@@ -17,9 +17,11 @@ import vue.holder.DepartementViewHolder;
 public class DepartementAdapter extends RecyclerView.Adapter<DepartementViewHolder> {
     private List<Departement>lesDepartements;
 
-    public DepartementAdapter(List<Departement>lesDepartements){
+
+    public DepartementAdapter(List<Departement> lesDepartements){
         this.lesDepartements = lesDepartements;
     }
+
     public DepartementViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
     {
         Context context = viewGroup.getContext();
@@ -35,15 +37,9 @@ public class DepartementAdapter extends RecyclerView.Adapter<DepartementViewHold
         myViewHolder.bind(unDepartement);
     }
     @Override
-    public int getItemCount()
-    {
-        return this.lesDepartements.size();
+    public int getItemCount() {
+        return lesDepartements.size();
     }
 
-    public void refreshPresentations(List<Departement> lesD) {
-        notifyItemRangeRemoved(0, this.lesDepartements.size());
-        this.lesDepartements.clear();
-        this.lesDepartements.addAll(lesD);
-        notifyItemRangeChanged(0, this.lesDepartements.size());
-    }
+
 }

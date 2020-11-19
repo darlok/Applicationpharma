@@ -80,15 +80,13 @@ public class MainActivity extends AppCompatActivity {
     {
         //DEPARTEMENT
         lesDepartements = accesDonnees.chargeLesDepartements();
-        //lesDepartements.add(new Departement("15","Cantal"));
-        //lesDepartements.add(new Departement("46","Lot"));
         DepartementrecyclerView = (RecyclerView) findViewById(R.id.activity_main_Departement_recyclerview);
         DepartementrecyclerView.setLayoutManager(new LinearLayoutManager(this));
         monAdapterDep = new DepartementAdapter(lesDepartements);
         DepartementrecyclerView.setAdapter(monAdapterDep);
 
         //PHARMACIE
-        lesPharmacies.add(new Pharmacie (
+        /*lesPharmacies.add(new Pharmacie (
                 "010002285",
                 "PHARMACIE DU CHAMP DE MARS ",
                 "9",
@@ -102,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
                 "0474382135",
                 "620" ,
                 "39352920100013" 	));
+
+         */
+        lesPharmacies=accesDonnees.chargeLesPharmacies();
         PharmacierecyclerView = (RecyclerView) findViewById(R.id.activity_main_Pharmacie_recyclerview);
         PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
         monAdapterPharma = new PharmacieAdapter(lesPharmacies);

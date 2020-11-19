@@ -3,7 +3,9 @@ package Modele;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Pharmacie implements Parcelable {
+import java.util.ArrayList;
+
+public class Pharmacie extends ArrayList<Departement> implements Parcelable {
     private String noFiness, raisonSociale,numVoie,typeVoie,voie,lieuDitBp,codeDepartement,codePostal,Ville,telephone,telecopie,siret,numCategorie;
     private Pharmacie laPharmacie;
     private Departement leDepartement;
