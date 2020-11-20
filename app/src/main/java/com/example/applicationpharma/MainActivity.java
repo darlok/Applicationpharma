@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
     private DAO accesDonnees;
     private final int REQUEST_PERMISSION_EXTERNAL_CARD = 1;
+    private SearchView recherche;
     private static String DB_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+ File.separator + "pharma";
     private static String DB_NAME = "pharmacies.db";
 
@@ -51,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        recherche = (SearchView) findViewById(R.id.SearchView);
+        String resultatRecherche = recherche.toString();
 
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
@@ -69,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         this.accesDonnees= new DAO(this);
 
         this.gererViewRecycler();
-
     }
 
     private void gererViewRecycler()
