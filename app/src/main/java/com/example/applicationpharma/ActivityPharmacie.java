@@ -37,15 +37,16 @@ public class ActivityPharmacie extends AppCompatActivity implements RecyclerView
         String dpt = i.getStringExtra("codeDpt");
         //Toast.makeText(ActivityPharmacie.this,"bonjour", Toast.LENGTH_SHORT).show();
 
-        this.gererViewRecycler();
+        this.gererViewRecycler(dpt);
 
     }
-    private void gererViewRecycler()
+    private void gererViewRecycler(String dpt)
     {
-        //lesPharmacies.add(new Pharmacie("01","cc","9","","","","","","","","","",""));
+        //lesPharmacies.add(new Pharmacie("01","cc","9","1","1","1","1","1","1","1","1","1","1"));
+        //lesPharmacies.add(new Pharmacie("01","testpharm","9","1","1","1","1","1","1","1","1","1","1"));
 
 
-        //lesPharmacies=accesDonnees.getPharmaciesParDepartement("15");
+        lesPharmacies=accesDonnees.getPharmaciesParDepartement(dpt);
         PharmacierecyclerView = (RecyclerView) findViewById(R.id.activity_main_Pharmacie_recyclerview);
         PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
         monAdapterPharma = new PharmacieAdapter(lesPharmacies, this);
