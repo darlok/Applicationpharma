@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import Modele.Pharmacie;
+import Modele.dao.DAO;
 import vue.adapter.PharmacieAdapter;
 
 public class ActivityPharmacie extends AppCompatActivity {
@@ -18,6 +19,9 @@ public class ActivityPharmacie extends AppCompatActivity {
     private List<Pharmacie> lesPharmacies;
     private RecyclerView PharmacierecyclerView;
     private PharmacieAdapter monAdapterPharma;
+    private DAO accesDonnees;
+    private String dpt;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class ActivityPharmacie extends AppCompatActivity {
     }
     private void gererViewRecycler()
     {
+
         lesPharmacies.add(new Pharmacie(
                 "010002285",
                 "PHARMACIE DU CHAMP DE MARS ",
@@ -46,8 +51,7 @@ public class ActivityPharmacie extends AppCompatActivity {
                 "620" ,
                 "39352920100013" 	));
 
-
-        // lesPharmacies=accesDonnees.chargeLesPharmacies();
+        //lesPharmacies = accesDonnees.getPharmaciesParDepartement(dpt);
         PharmacierecyclerView = (RecyclerView) findViewById(R.id.activity_main_Pharmacie_recyclerview);
         PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
         monAdapterPharma = new PharmacieAdapter(lesPharmacies);

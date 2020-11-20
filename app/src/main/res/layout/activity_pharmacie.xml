@@ -23,14 +23,14 @@
             android:layout_width="143dp"
             android:layout_height="wrap_content"
             android:padding="20dip"
-            android:text="Large Text" />
+             />
 
         <TextView
             android:id="@+id/activity_main_pharmacie_ville"
             android:layout_width="167dp"
             android:layout_height="wrap_content"
             android:padding="20dip"
-            android:text="Large Text" />
+             />
 
     </LinearLayout>
     <LinearLayout
@@ -51,14 +51,14 @@
             android:layout_width="148dp"
             android:layout_height="wrap_content"
             android:padding="20dip"
-            android:text="Large Text" />
+             />
 
         <TextView
             android:id="@+id/activity_main_pharmacie_telecopie"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:padding="20dip"
-            android:text="Large Text" />
+             />
 
     </LinearLayout>
     <Button

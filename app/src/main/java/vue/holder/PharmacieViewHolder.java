@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.applicationpharma.R;
 
 import Modele.Pharmacie;
+import vue.fragment.RecyclerViewClickListener;
 
 public class PharmacieViewHolder extends RecyclerView.ViewHolder {
     private TextView nom,telecopie;
     private  TextView ville;
     private  TextView telephone;
+    private RecyclerViewClickListener listerner;
 
 
     public PharmacieViewHolder(View itemView){

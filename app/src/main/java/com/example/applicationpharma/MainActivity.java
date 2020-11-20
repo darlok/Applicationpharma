@@ -95,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         DepartementrecyclerView.setAdapter(monAdapterDep);
 
         //PHARMACIE
+        /*
+
         lesPharmacies.add(new Pharmacie (
                 "010002285",
                 "PHARMACIE DU CHAMP DE MARS ",
@@ -115,6 +117,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
         monAdapterPharma = new PharmacieAdapter(lesPharmacies);
         PharmacierecyclerView.setAdapter(monAdapterPharma);
+
+         */
     }
 
     @Override
