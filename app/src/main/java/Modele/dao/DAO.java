@@ -151,7 +151,7 @@ public class DAO extends SQLiteAssetHelper {
         ArrayList<Pharmacie> lesPharmacies = new ArrayList();
 
         Cursor c = database.query(TABLE_PHARMACIES,
-                allColumnsPharma,  COLUMN_P_codeDepartement+ " LIKE \"%" + codeDpt+"%\"", null, null, null, null);
+                allColumnsPharma,  COLUMN_P_codeDepartement+ " LIKE \"%" +codeDpt+"%\"", null, null, null, null);
 
         c.moveToFirst();
 
@@ -191,7 +191,6 @@ public class DAO extends SQLiteAssetHelper {
 
         while (c.moveToNext()){
             Pharmacie p = ligneToPharmacies(c);
-            p.setLeDepartement(d);
             lesPharmacies.add(p);
         }
         c.close();

@@ -24,16 +24,12 @@ public class PharmacieAdapter extends RecyclerView.Adapter<PharmacieViewHolder> 
         this.lesPharmacies = lesPharmacies;
     }
 
-
-    public PharmacieAdapter(List<Pharmacie>lesPharmacies){
-        this.lesPharmacies=lesPharmacies;
-    }
     public PharmacieViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
     {
         Context context = viewGroup.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.activity_pharmacie, viewGroup, false);
-        return new PharmacieViewHolder(view);
+        return new PharmacieViewHolder(view,mListener);
     }
     @Override
     public void onBindViewHolder(PharmacieViewHolder myViewHolder, int position)
@@ -47,10 +43,4 @@ public class PharmacieAdapter extends RecyclerView.Adapter<PharmacieViewHolder> 
         return this.lesPharmacies.size();
     }
 
-    public void refreshPresentations(List<Pharmacie> lesP) {
-        notifyItemRangeRemoved(0, this.lesPharmacies.size());
-        this.lesPharmacies.clear();
-        this.lesPharmacies.addAll(lesP);
-        notifyItemRangeChanged(0, this.lesPharmacies.size());
-    }
 }

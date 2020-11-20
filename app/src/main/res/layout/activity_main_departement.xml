@@ -35,13 +35,4 @@
         android:padding="1dip"
         android:text="Visualiser" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/activity_main_Pharmacie_recyclerview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-
-
 </LinearLayout>

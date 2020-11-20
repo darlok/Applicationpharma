@@ -11,19 +11,19 @@ public class Pharmacie extends ArrayList<Departement> implements Parcelable {
     private Departement leDepartement;
 
     public Pharmacie(String noFiness, String raisonSociale,String numVoie,String typeVoie, String voie,String lieuDitBp,String codeDepartement,String codePostal,String Ville,String telephone,String telecopie,String numCategorie,String siret){
+        this.noFiness=noFiness;
+        this.raisonSociale=raisonSociale;
+        this.numVoie=numVoie;
+        this.typeVoie=typeVoie;
+        this.voie=voie;
+        this.lieuDitBp=lieuDitBp;
         this.codeDepartement=codeDepartement;
         this.codePostal=codePostal;
-        this.lieuDitBp=lieuDitBp;
-        this.noFiness=noFiness;
-        this.numCategorie=numCategorie;
-        this.numVoie=numVoie;
-        this.raisonSociale=raisonSociale;
-        this.siret=siret;
-        this.telecopie=telecopie;
-        this.telephone=telephone;
-        this.typeVoie=typeVoie;
         this.Ville=Ville;
-        this.voie=voie;
+        this.telephone=telephone;
+        this.telecopie=telecopie;
+        this.numCategorie=numCategorie;
+        this.siret=siret;
     }
 
     protected Pharmacie(Parcel in) {

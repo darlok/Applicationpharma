@@ -2,71 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="20dip">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="92dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="56dp"
-            android:layout_height="54dp"
-            android:gravity="center"
-            android:text="Nom : "
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/activity_main_pharmacie_nom"
-            android:layout_width="143dp"
-            android:layout_height="wrap_content"
-            android:padding="20dip"
-             />
-
-        <TextView
-            android:id="@+id/activity_main_pharmacie_ville"
-            android:layout_width="167dp"
-            android:layout_height="wrap_content"
-            android:padding="20dip"
-             />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="92dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="56dp"
-            android:layout_height="54dp"
-            android:gravity="center"
-            android:padding="-20dip"
-            android:text="Coord. : "
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/activity_main_pharmacie_telephone"
-            android:layout_width="148dp"
-            android:layout_height="wrap_content"
-            android:padding="20dip"
-             />
-
-        <TextView
-            android:id="@+id/activity_main_pharmacie_telecopie"
-            android:layout_width="164dp"
-            android:layout_height="wrap_content"
-            android:padding="20dip"
-             />
-
-    </LinearLayout>
-    <Button
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_main_Pharmacie_recyclerview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:text="Localiser" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </LinearLayout>
