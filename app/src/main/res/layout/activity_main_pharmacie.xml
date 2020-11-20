@@ -9,55 +9,67 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="92dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="56dp"
-            android:layout_height="54dp"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:gravity="center"
             android:text="Nom : "
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/activity_main_pharmacie_nom"
-            android:layout_width="143dp"
+            android:layout_width="337dp"
             android:layout_height="wrap_content"
-            android:padding="20dip"
-            android:text="Large Text" />
+            android:padding="20dip" />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:padding="-20dip"
+            android:text="Ville :"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/activity_main_pharmacie_ville"
-            android:layout_width="167dp"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
-            android:padding="20dip"
-            android:text="Large Text" />
+            android:padding="20dip" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="92dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="56dp"
-            android:layout_height="54dp"
+            android:layout_width="55dp"
+            android:layout_height="30dp"
             android:padding="-20dip"
             android:text="Coord. : "
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/activity_main_pharmacie_telephone"
-            android:layout_width="148dp"
+            android:layout_width="337dp"
             android:layout_height="wrap_content"
-            android:padding="20dip"
-            android:text="Large Text" />
+            android:padding="20dip" />
+
+        <TextView
+            android:layout_width="65dp"
+            android:layout_height="30dp"
+            android:padding="-20dip"
+            android:text="Télécop. :"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/activity_main_pharmacie_telecopie"
-            android:layout_width="164dp"
+            android:layout_width="341dp"
             android:layout_height="wrap_content"
-            android:padding="20dip"
-            android:text="Large Text" />
+            android:padding="20dip" />
 
     </LinearLayout>
     <Button

@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     private void gererViewRecycler()
     {
         //DEPARTEMENT
+        //lesDepartements.add(new Departement("15","Cantal"));
+
         lesDepartements = accesDonnees.chargeLesDepartements();
         DepartementrecyclerView = (RecyclerView) findViewById(R.id.activity_main_Departement_recyclerview);
         DepartementrecyclerView.setLayoutManager(new LinearLayoutManager(this));

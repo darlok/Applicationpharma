@@ -31,7 +31,6 @@ public class PharmacieViewHolder extends RecyclerView.ViewHolder implements View
 
         bt.setOnClickListener(this);
 
-
     }
     public  void  bind(Pharmacie Pharma){
         nom.setText(Pharma.getRaisonSociale());

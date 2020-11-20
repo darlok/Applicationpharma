@@ -2,6 +2,7 @@ package com.example.applicationpharma;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +24,7 @@ public class ActivityPharmacie extends AppCompatActivity implements RecyclerView
     private PharmacieAdapter monAdapterPharma;
 
     private DAO accesDonnees;
+    private String dpt;
 
     @Override
 
@@ -44,8 +46,23 @@ public class ActivityPharmacie extends AppCompatActivity implements RecyclerView
     {
         //lesPharmacies.add(new Pharmacie("01","cc","9","1","1","1","1","1","1","1","1","1","1"));
         //lesPharmacies.add(new Pharmacie("01","testpharm","9","1","1","1","1","1","1","1","1","1","1"));
+    /*
+        lesPharmacies.add(new Pharmacie(
+                "010002285",
+                "PHARMACIE DU CHAMP DE MARS ",
+                "9",
+                "R ",
+                "ALEXANDRE BERARD ",
+                "",
+                "01 ",
+                "01500 ",
+                "AMBERIEU EN BUGEY ",
+                "0474380226 ",
+                "0474382135",
+                "620" ,
+                "39352920100013" 	));
 
-
+    */
         lesPharmacies=accesDonnees.getPharmaciesParDepartement(dpt);
         PharmacierecyclerView = (RecyclerView) findViewById(R.id.activity_main_Pharmacie_recyclerview);
         PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
