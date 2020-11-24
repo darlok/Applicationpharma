@@ -29,12 +29,14 @@ public class PharmacieViewHolder extends RecyclerView.ViewHolder implements View
         telecopie= itemView.findViewById(R.id.activity_main_pharmacie_telecopie);
         bt=itemView.findViewById(R.id.activity_main_pharmacie_button);
 
-        bt.setOnClickListener(this);
+        
+
 
     }
     public  void  bind(Pharmacie Pharma){
+        String addresse= Pharma.getNumVoie()+" "+Pharma.getTypeVoie()+" "+Pharma.getVoie()+" "+Pharma.getLieuDitBp()+" "+Pharma.getCodePostal()+" "+Pharma.getVille() ;
         nom.setText(Pharma.getRaisonSociale());
-        ville.setText(Pharma.getVille());
+        ville.setText(addresse);
         telecopie.setText(Pharma.getTelecopie());
         telephone.setText(Pharma.getTelephone());
     }

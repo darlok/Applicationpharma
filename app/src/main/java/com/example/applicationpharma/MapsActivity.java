@@ -39,6 +39,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Aurillac and move the camera
+
         LatLng aurillac = new LatLng(44.9454312, 2.4505352);
         mMap.addMarker(new MarkerOptions().position(aurillac).title("Marker in Aurillac"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(aurillac));
