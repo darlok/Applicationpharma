@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ import vue.adapter.DepartementAdapter;
 import vue.adapter.PharmacieAdapter;
 import vue.fragment.RecyclerViewClickListener;
 
+
 public class MainActivity extends AppCompatActivity implements RecyclerViewClickListener {
 
     private List<Departement> lesDepartements;
@@ -47,14 +50,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
     private DepartementAdapter monAdapterDep;
     private PharmacieAdapter monAdapterPharma;
+    private android.view.Menu Menu;
+    private Object MenuItem;
+    private android.view.MenuItem item;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        recherche = (SearchView) findViewById(R.id.SearchView);
-        String resultatRecherche = recherche.toString();
 
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
@@ -73,6 +77,43 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         this.accesDonnees= new DAO(this);
 
         this.gererViewRecycler();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        //ajoute les entrées de menu_depart à l'ActionBar
+        getMenuInflater().inflate(R.menu.menu_depart, menu);
+        return true;
+    }
+
+    //gère le click sur une action de l'ActionBar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.action_save:
+                save();
+                return true;
+            case R.id.action_delete:
+                delete();
+                return true;
+            case R.id.action_settings:
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void delete()
+    {
+
+    }
+
+    private void save()
+    {
+
     }
 
     private void gererViewRecycler()
