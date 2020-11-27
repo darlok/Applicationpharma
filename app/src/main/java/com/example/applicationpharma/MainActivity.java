@@ -27,6 +27,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import Modele.Departement;
 import Modele.dao.DAO;
 import vue.adapter.DepartementAdapter;
