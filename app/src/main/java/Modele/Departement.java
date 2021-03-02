@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-public class Departement implements Parcelable {
+public class  Departement implements Parcelable {
     private String codeDpt,nomDpt;
     private Departement leDepartement;
     private ArrayList<Pharmacie>LesPharmacies;

@@ -55,87 +55,41 @@ public class Pharmacie extends ArrayList<Departement> implements Parcelable {
         }
     };
 
-    public String getNoFiness()
-    { return noFiness; }
-    public void setNoFiness()
-    { this.noFiness= noFiness; }
-
-
-    public String getRaisonSociale()
-    { return raisonSociale; }
-    public void setRaisonSociale()
-    { this.raisonSociale= raisonSociale; }
-
-    public String getNumVoie()
-    { return numVoie; }
-    public void setNumVoie()
-    { this.numVoie= numVoie; }
-
-    public String getTypeVoie()
-    { return typeVoie; }
-    public void setTypeVoie()
-    { this.typeVoie= typeVoie; }
-
-    public String getVoie()
-    { return voie; }
-    public void setVoie()
-    { this.voie= voie; }
-
-    public String getLieuDitBp()
-    { return lieuDitBp; }
-    public void setLieuDitBp()
-    { this.lieuDitBp= lieuDitBp; }
-
-    public String getCodeDepartement()
-    { return codeDepartement; }
-    public void setCodeDepartement()
-    { this.codeDepartement= codeDepartement; }
-
-    public String getCodePostal()
-    {return codePostal;}
-    public void setCodePostal()
-    {this.codePostal= codePostal;}
-
-    public String getVille()
-    {return Ville;}
-    public void setVille()
-    {this.Ville= Ville;}
-
-    public String getTelephone()
-    {return telephone;}
-    public void setTelephone()
-    {this.telephone= telephone;}
-
-    public String getTelecopie()
-    {return telecopie;}
-    public void setTelecopie()
-    {this.telecopie= telecopie;}
-
-    public String getSiret()
-    {return siret;}
-
-    public void setSiret()
-    {this.siret= siret;}
-
-    public String getNumCategorie()
-    {return numCategorie;}
-
-    public void setNumCategorie()
-    {this.numCategorie= numCategorie;}
-
+    public String getNoFiness() { return noFiness; }
+    public void setNoFiness() { this.noFiness= noFiness; }
+    public String getRaisonSociale() { return raisonSociale; }
+    public void setRaisonSociale() { this.raisonSociale= raisonSociale; }
+    public String getNumVoie() { return numVoie; }
+    public void setNumVoie() { this.numVoie= numVoie; }
+    public String getTypeVoie() { return typeVoie; }
+    public void setTypeVoie() { this.typeVoie= typeVoie; }
+    public String getVoie() { return voie; }
+    public void setVoie() { this.voie= voie; }
+    public String getLieuDitBp() { return lieuDitBp; }
+    public void setLieuDitBp() { this.lieuDitBp= lieuDitBp; }
+    public String getCodeDepartement() { return codeDepartement; }
+    public void setCodeDepartement() { this.codeDepartement= codeDepartement; }
+    public String getCodePostal() {return codePostal;}
+    public void setCodePostal() {this.codePostal= codePostal;}
+    public String getVille() {return Ville;}
+    public void setVille() {this.Ville= Ville;}
+    public String getTelephone() {return telephone;}
+    public void setTelephone() {this.telephone= telephone;}
+    public String getTelecopie() {return telecopie;}
+    public void setTelecopie() {this.telecopie= telecopie;}
+    public String getSiret() {return siret;}
+    public void setSiret() {this.siret= siret;}
+    public String getNumCategorie() {return numCategorie;}
+    public void setNumCategorie() {this.numCategorie= numCategorie;}
     public Pharmacie getLaPharmacie() {
         return laPharmacie ;
     }
-
     public void setLaPharmacie(Pharmacie laPharmacie) {
         this.laPharmacie = laPharmacie;
     }
-
-
     public Departement getLeDepartement() {
         return leDepartement;
     }
-
     public void setLeDepartement(Departement leDepartement) {
         this.leDepartement = leDepartement;
     }

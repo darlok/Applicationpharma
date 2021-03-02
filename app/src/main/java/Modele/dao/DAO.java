@@ -66,7 +66,6 @@ public class DAO extends SQLiteAssetHelper {
     };
 
 
-
     public DAO(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         //this.dbHelper = new MySQLiteHelper(context);
