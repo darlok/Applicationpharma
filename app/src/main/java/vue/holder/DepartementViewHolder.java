@@ -27,7 +27,6 @@ public class DepartementViewHolder extends RecyclerView.ViewHolder implements Vi
         //itemView.setOnClickListener(this);
         bt.setOnClickListener(this);
     }
-
     public  void  bind(Departement Depart){
         nomText.setText(Depart.getNomDpt());
         codeDep.setText(Depart.getCodeDpt());
