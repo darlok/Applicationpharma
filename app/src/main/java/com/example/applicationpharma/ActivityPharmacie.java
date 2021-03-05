@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +26,7 @@ public class ActivityPharmacie extends AppCompatActivity implements RecyclerView
 
     private DAO accesDonnees;
     private String dpt;
+    private MapsActivity MapsActivity;
 
     @Override
 
