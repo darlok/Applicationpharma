@@ -8,11 +8,15 @@ import java.util.ArrayList;
 public class  Produit implements Parcelable {
     private String codePdt,denominationPdt,indicationsPdt,formePdt;
 
-    public Produit(String codePdt, String denominationPdt){
+    public Produit(String codePdt, String denominationPdt,String indicationPdt,String formePdt){
         this.codePdt=codePdt;
         this.denominationPdt=denominationPdt;
         this.indicationsPdt= indicationPdt;
         this.formePdt=formePdt;
+    }
+    public Produit(String codePdt, String denominationPdt){
+        this.codePdt=codePdt;
+        this.denominationPdt=denominationPdt;
     }
 
     public Produit(Parcel in) {
