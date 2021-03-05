@@ -5,8 +5,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-//import com.google.gson.Gson;
+import com.example.applicationpharma.MainActivity;
+import com.example.applicationpharma.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +25,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import vue.adapter.DepartementAdapter;
 
 public class WebService extends AsyncTask<String,Void,JSONArray> {
     private AppCompatActivity myActivity;
@@ -89,16 +94,13 @@ public class WebService extends AsyncTask<String,Void,JSONArray> {
             //Pour un simple JSONObject
             //String name = s.getString("name");
             //Toast.makeText(myActivity, "Fin de traitement. Résultat : " + name, Toast.LENGTH_SHORT).show();
-            List<Departement> lesDepartements = new ArrayList<Departement>();
+            List<Produit> lesProduits = new ArrayList<Produit>();
             JSONObject jsonStation;
             for (int i = 0; i<s.length(); i++)
             {
                 jsonStation = s.getJSONObject(i);
-                lesDepartements.add(new Departement(jsonStation.getString("codeDpt"),jsonStation.getString("nomDpt")));
+                lesProduits.add(new Produit(jsonStation.getString("codePdt"),jsonStation.getString("denominationPdt")));
             }
-            String exemple = lesDepartements.get(5).getNomDpt();
-            Toast.makeText(myActivity, "Fin de traitement. Résultat : " + exemple, Toast.LENGTH_SHORT).show();
-
 
         } catch (Exception e)
         {

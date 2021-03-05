@@ -35,6 +35,7 @@ import java.util.List;
 
 import Modele.Departement;
 import Modele.dao.DAO;
+import retrofit2.Retrofit;
 import vue.adapter.DepartementAdapter;
 import vue.adapter.PharmacieAdapter;
 import vue.fragment.RecyclerViewClickListener;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -83,6 +85,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         this.accesDonnees= new DAO(this);
 
         this.gererViewRecycler();
+
+
     }
 
     @Override
