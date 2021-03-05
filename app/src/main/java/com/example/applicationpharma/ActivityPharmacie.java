@@ -2,6 +2,8 @@ package com.example.applicationpharma;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +44,28 @@ public class ActivityPharmacie extends AppCompatActivity implements RecyclerView
         this.gererViewRecycler(dpt);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        //ajoute les entrées de menu_pharma à l'ActionBar
+        getMenuInflater().inflate(R.menu.menu_pharma, menu);
+        return true;
+    }
+
+    //gère le click sur une action de l'ActionBar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.action_settings:
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void gererViewRecycler(String dpt)
     {
         //lesPharmacies.add(new Pharmacie("01","cc","9","1","1","1","1","1","1","1","1","1","1"));

@@ -1,9 +1,14 @@
 package com.example.applicationpharma;
 
 import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.MatrixCursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
     private DepartementAdapter monAdapterDep;
     private PharmacieAdapter monAdapterPharma;
-    private android.view.Menu Menu;
+    private android.view.Menu menu;
     private Object MenuItem;
     private android.view.MenuItem item;
 
@@ -81,12 +86,44 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     }
 
     @Override
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public boolean onCreateOptionsMenu(Menu menu)
     {
         //ajoute les entrées de menu_depart à l'ActionBar
         getMenuInflater().inflate(R.menu.menu_depart, menu);
+
+        this.menu = menu;
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+
+            SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+            SearchView search = (SearchView) menu.findItem(R.id.action_search).getActionView();
+
+            search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
+
+            search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    return true;
+                }
+            });
+        }
+
         return true;
     }
+            /*
+            Liens pour interface et barre de recherche, à conserver :
+            ->
+                https://stackoverflow.com/questions/21585326/implementing-searchview-in-action-bar
+                https://developpement-informatique.com/article/252/interfaces-et-heritage-multiple-en-java#
+             */
+
 
     //gère le click sur une action de l'ActionBar
     @Override
@@ -94,27 +131,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     {
         switch (item.getItemId())
         {
-            case R.id.action_save:
-                save();
-                return true;
-            case R.id.action_delete:
-                delete();
-                return true;
             case R.id.action_settings:
                 return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void delete()
-    {
-
-    }
-
-    private void save()
-    {
-
     }
 
     private void gererViewRecycler()
@@ -140,7 +161,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     }
 
     @Override
-
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case REQUEST_PERMISSION_EXTERNAL_CARD:
