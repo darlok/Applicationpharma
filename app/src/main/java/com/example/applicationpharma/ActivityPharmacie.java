@@ -14,8 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import Modele.Departement;
 import Modele.Pharmacie;
+import Modele.WebService;
 import Modele.dao.DAO;
+import Modele.webservicePharma;
 import vue.adapter.PharmacieAdapter;
 import vue.fragment.RecyclerViewClickListener;
 
@@ -35,16 +38,18 @@ public class ActivityPharmacie extends AppCompatActivity implements RecyclerView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pharmacie);
-
-        lesPharmacies = new ArrayList<Pharmacie>();
         this.accesDonnees= new DAO(this);
 
         Intent i = getIntent();
-        String dpt = i.getStringExtra("codeDpt");
+        dpt = i.getStringExtra("codeDpt");
         //Toast.makeText(ActivityPharmacie.this,"bonjour", Toast.LENGTH_SHORT).show();
 
         this.gererViewRecycler(dpt);
 
+    }
+    public void setLesPharmacies(List<Pharmacie> ph)
+    {
+        this.lesPharmacies=ph;
     }
 
     @Override
@@ -70,6 +75,8 @@ public class ActivityPharmacie extends AppCompatActivity implements RecyclerView
 
     private void gererViewRecycler(String dpt)
     {
+        webservicePharma webservice = new webservicePharma((AppCompatActivity)this);
+        webservice.execute("http://192.168.90.49:8080/api/Pharmacies/Departements/"+dpt);
         //lesPharmacies.add(new Pharmacie("01","cc","9","1","1","1","1","1","1","1","1","1","1"));
         //lesPharmacies.add(new Pharmacie("01","testpharm","9","1","1","1","1","1","1","1","1","1","1"));
     /*
@@ -88,12 +95,13 @@ public class ActivityPharmacie extends AppCompatActivity implements RecyclerView
                 "620" ,
                 "39352920100013" 	));
 
-    */
+
         lesPharmacies=accesDonnees.getPharmaciesParDepartement(dpt);
         PharmacierecyclerView = (RecyclerView) findViewById(R.id.activity_main_Pharmacie_recyclerview);
         PharmacierecyclerView.setLayoutManager(new LinearLayoutManager(this));
         monAdapterPharma = new PharmacieAdapter(lesPharmacies, this);
         PharmacierecyclerView.setAdapter(monAdapterPharma);
+        */
     }
 
     @Override

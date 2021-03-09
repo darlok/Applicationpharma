@@ -1,15 +1,14 @@
 package Modele;
 
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.applicationpharma.ActivityPharmacie;
 import com.example.applicationpharma.MainActivity;
-import com.example.applicationpharma.MapsActivity;
 import com.example.applicationpharma.R;
 
 import org.json.JSONArray;
@@ -28,15 +27,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vue.adapter.DepartementAdapter;
+import vue.adapter.PharmacieAdapter;
 import vue.fragment.RecyclerViewClickListener;
 
-public class WebService extends AsyncTask<String,Void,JSONArray> {
+public class webservicePharma extends AsyncTask<String,Void,JSONArray> {
     private AppCompatActivity myActivity;
-    private  RecyclerView Rv;
+    private RecyclerView Rv;
 
-    public WebService(AppCompatActivity mainActivity)
+    public webservicePharma(AppCompatActivity ActivityPharmacie)
     {
-        myActivity = mainActivity;
+        myActivity = ActivityPharmacie;
     }
 
     @Override
@@ -87,6 +87,8 @@ public class WebService extends AsyncTask<String,Void,JSONArray> {
         }
 
         return json; // returns the result*/
+        //return  null;
+
     }
 
     @Override
@@ -97,19 +99,28 @@ public class WebService extends AsyncTask<String,Void,JSONArray> {
             //Pour un simple JSONObject
             //String name = s.getString("name");
             //Toast.makeText(myActivity, "Fin de traitement. Résultat : " + name, Toast.LENGTH_SHORT).show();
-            List<Departement> lesDepartements = new ArrayList<Departement>();
+            List<Pharmacie> lesPharmacies = new ArrayList<Pharmacie>();
+            //lesPharmacies.add(new Pharmacie("01","cc","9","1","1","1","1","1","1","1","1","1","1"));
             JSONObject jsonStation;
             for (int i = 0; i<s.length(); i++)
             {
                 jsonStation = s.getJSONObject(i);
-                lesDepartements.add(new Departement(jsonStation.getString("codeDpt"),jsonStation.getString("nomDpt")));
+                lesPharmacies.add(new Pharmacie(jsonStation.getString("noFiness"),jsonStation.getString("raisonSociale"),
+                        jsonStation.getString("numVoie"),jsonStation.getString("typeVoie"),jsonStation.getString("voie"),
+                        jsonStation.getString("lieuDitBp"),jsonStation.getString("codeDepartement"),jsonStation.getString("codePostal"),
+                        jsonStation.getString("ville"),jsonStation.getString("telephone"),jsonStation.getString("telecopie"),String.valueOf(jsonStation.getInt("numCategorie")),
+                        jsonStation.getString("siret")));
             }
-            ((MainActivity )myActivity).setLesDepartements(lesDepartements);
-            DepartementAdapter da = new DepartementAdapter(lesDepartements, (RecyclerViewClickListener) myActivity);
-            Rv = (RecyclerView) myActivity.findViewById(R.id.activity_main_Departement_recyclerview);
+
+
+
+
+            ((ActivityPharmacie)myActivity).setLesPharmacies(lesPharmacies);
+            PharmacieAdapter ph = new PharmacieAdapter(lesPharmacies, (RecyclerViewClickListener) myActivity);
+            Rv = (RecyclerView) myActivity.findViewById(R.id.activity_main_Pharmacie_recyclerview);
             Rv.setLayoutManager(new LinearLayoutManager(myActivity));
             Rv.setHasFixedSize(true);
-            Rv.setAdapter(da);
+            Rv.setAdapter(ph);
 
 
 

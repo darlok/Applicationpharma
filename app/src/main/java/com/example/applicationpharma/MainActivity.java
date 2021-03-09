@@ -34,6 +34,7 @@ import java.util.List;
 
 
 import Modele.Departement;
+import Modele.WebService;
 import Modele.dao.DAO;
 import retrofit2.Retrofit;
 import vue.adapter.DepartementAdapter;
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
     private List<Departement> lesDepartements;
 
-    private RecyclerView DepartementrecyclerView;
 
 
     private DAO accesDonnees;
@@ -80,13 +80,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
             Toast.makeText(MainActivity.this, "Permission (already) Granted!", Toast.LENGTH_SHORT).show();
         }
 
-        lesDepartements = new ArrayList<Departement>();
-
         this.accesDonnees= new DAO(this);
 
         this.gererViewRecycler();
 
 
+    }
+    public void setLesDepartements(List<Departement> De)
+    {
+        this.lesDepartements=De;
     }
 
     @Override
@@ -144,23 +146,25 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
     private void gererViewRecycler()
     {
+        WebService webservice = new WebService((AppCompatActivity)this);
+        webservice.execute("http://192.168.90.49:8080/api/Departements");
         //DEPARTEMENT
         //lesDepartements.add(new Departement("15","Cantal"));
 
-        lesDepartements = accesDonnees.chargeLesDepartements();
-        DepartementrecyclerView = (RecyclerView) findViewById(R.id.activity_main_Departement_recyclerview);
+        //lesDepartements = accesDonnees.chargeLesDepartements();
+        /*DepartementrecyclerView = (RecyclerView) findViewById(R.id.activity_main_Departement_recyclerview);
         DepartementrecyclerView.setLayoutManager(new LinearLayoutManager(this));
         monAdapterDep = new DepartementAdapter(lesDepartements,this);
-        DepartementrecyclerView.setAdapter(monAdapterDep);
+        DepartementrecyclerView.setAdapter(monAdapterDep);*/
 
     }
 
     @Override
     public void onListItemClick(int position) {
-        //Toast.makeText(MainActivity.this,lesDepartements.get(position).getNomDpt(), Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(MainActivity.this,ActivityPharmacie.class);
-        i.putExtra("codeDpt",lesDepartements.get(position).getCodeDpt());
-        startActivity(i);
+        //Toast.makeText(MainActivity.this,lesDepartements.get(position).getCodeDpt(), Toast.LENGTH_SHORT).show();
+       Intent i = new Intent(MainActivity.this,ActivityPharmacie.class);
+       i.putExtra("codeDpt", lesDepartements.get(position).getCodeDpt());
+       startActivity(i);
 
     }
 
